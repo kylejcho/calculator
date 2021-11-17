@@ -4,12 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>calculator</title>
+    <title>Calculator</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <div class="main">
         <div class="calculator">
+            <div class="header">
+                <button class="settingsButton">
+                  <div></div>
+                  <div></div>  
+                  <div></div>    
+                </button>
+                <div class="title">Calculator</div>
+                <div class="spacer"></div>
+            </div>
             <div class="display">
                 <div class="history">5 × 5 =</div>
                 <div class="result">25</div>
@@ -18,23 +27,23 @@
                 <button class = "key">C</button>
                 <button class = "key"><i>x</i><sup>2</sup></button>
                 <button class = "key">del</button>
-                <button class = "key">÷</button>
+                <button class = "key operator">÷</button>
                 <button class = "key num">7</button>
                 <button class = "key num">8</button>
                 <button class = "key num">9</button>
-                <button class = "key">×</button>
+                <button class = "key operator">×</button>
                 <button class = "key num">4</button>
                 <button class = "key num">5</button>
                 <button class = "key num">6</button>
-                <button class = "key">-</button>
+                <button class = "key operator" id = "minusKey">—</button>
                 <button class = "key num">1</button>
                 <button class = "key num">2</button>
                 <button class = "key num">3</button>
-                <button class = "key">+</button>
-                <button class = "key num">+/-</button>
+                <button class = "key operator">+</button>
+                <button class = "key num" >+/-</button>
                 <button class = "key num">0</button>
                 <button class = "key num">.</button>
-                <button class = "key">=</button>
+                <button class = "key operator" id = "equalKey">=</button>
             </div>
         </div>
     </div>

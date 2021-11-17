@@ -9,31 +9,80 @@
 }
 
 .main {
+    padding-top: 15vh;
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 100vh;
     background-color: rgb(5, 5, 5);
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.settingsButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 35px;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    margin-left: 3px;
+    margin-top: 3px;
+}
+
+.settingsButton div {
+    height: 1px;
+    width: 13px;
+    background-color: white;
+    margin-top: 1.5px;
+    margin-bottom: 1.5px;
+}
+
+.settingsButton:hover {
+    background-color: rgb(53, 49, 50);
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: 600;
+    height: 30px;
+    width: 90px;
+}
+
+.spacer {
+    height: 20px;
+    width: 155px;
+}
+
 .calculator {
-    height: 330px;
+    height: 355px;
     width: 290px;
-    background-color: #1f1f1f;
     border-radius: 5px;
     border: rgb(83, 83, 83) 1.5px solid;
+    background: rgb(31,31,31);
+    background: linear-gradient(31deg, rgba(31,31,31,1) 0%, rgba(29,28,33,1) 27%, rgba(40,30,34,1) 100%);
 }
 
 .display {
-    border-radius: 5px;
     height: 90px;
     width: 100%;
+    border-radius: 5px;
 }
 
 .history {
     display: flex;
     justify-content: end;
-    margin-top: 15px;
     height: 20px;
     width : 275px;
     font-size: 0.8rem;
@@ -45,8 +94,8 @@
     justify-content: end;
     height: 60px;
     width : 280px;
-    font-size: 3rem;
-    font-weight: 500;
+    font-size: 2.5rem;
+    font-weight: 600;
 }
 
 .keypad {
@@ -55,23 +104,48 @@
     height: 220px;
     width: 285px;
     border-radius: 5px;
-    border: 2.5px solid #1f1f1f;
+    border: 2.5px solid #1f1f1f00;
 }
 
 .key {
     border: 1.5px solid #2f2f2f;
     margin: .5px;
-    background-color: #363636;
+    background-color: rgb(61, 57, 60);
     border-radius: 5px;
+    
+}
+
+.key:hover {
+    background-color: #525252;
 }
 
 .num {
-    background-color: #525252;
-    border: 1.5px solid #424242;
+    background-color: rgb(70, 67, 70);
+    border: 1.5px solid rgb(59, 57, 59);
 } 
 
 .num:hover {
-    background-color: #424242;
+    background-color: rgb(61, 57, 60);
 }
 
+.operator {
+    font-size: 1.4rem;
+    font-weight: 300;
+}
 
+#equalKey {
+    background-color: rgb(165, 184, 189);
+    color: rgb(31,31,31);
+    font-size: 1.7rem;
+}
+
+#equalKey:hover {
+    background-color: rgb(154, 173, 177);
+    color: rgb(31,31,31);
+    font-size: 1.7rem;
+}
+
+#minusKey {
+    font-size: 0.75rem;
+    font-weight: 400;
+}
