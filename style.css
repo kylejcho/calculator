@@ -40,11 +40,11 @@
 }
 
 .settingsButton div {
-    height: 1px;
+    height: 0.5px;
     width: 13px;
     background-color: white;
-    margin-top: 1.5px;
-    margin-bottom: 1.5px;
+    margin-top: 1.7px;
+    margin-bottom: 1.7px;
 }
 
 .settingsButton:hover {
@@ -71,7 +71,7 @@
     border-radius: 5px;
     border: rgb(83, 83, 83) 1.5px solid;
     background: rgb(31,31,31);
-    background: linear-gradient(31deg, rgba(31,31,31,1) 0%, rgba(29,28,33,1) 27%, rgba(40,30,34,1) 100%);
+    background: linear-gradient(31deg, rgba(31,31,31,1) 0%, rgba(29,28,33,1) 1%, rgba(40,30,30,1) 100%);
 }
 
 .display {
@@ -104,13 +104,13 @@
     height: 220px;
     width: 285px;
     border-radius: 5px;
-    border: 2.5px solid #1f1f1f00;
+    border: 2.5px solid #00000000;
 }
 
 .key {
     border: 1.5px solid #2f2f2f;
-    margin: .5px;
-    background-color: rgb(61, 57, 60);
+    margin: 0.8px;
+    background-color: rgb(58, 54, 57);
     border-radius: 5px;
     
 }
@@ -137,10 +137,11 @@
     background-color: rgb(165, 184, 189);
     color: rgb(31,31,31);
     font-size: 1.7rem;
+    border: 1.5px solid rgb(136, 152, 156);
 }
 
 #equalKey:hover {
-    background-color: rgb(154, 173, 177);
+    background-color: rgb(145, 163, 167);
     color: rgb(31,31,31);
     font-size: 1.7rem;
 }
