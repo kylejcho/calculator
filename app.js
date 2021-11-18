@@ -1,3 +1,12 @@
+const one = document.querySelector('.1')
+
+
+
+
+
+
+
+
 let currentOperand
 let lastOperand
 let operater = "+";
