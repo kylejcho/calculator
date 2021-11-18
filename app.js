@@ -40,9 +40,8 @@ plusButton.onclick = () => {
     if (a > 0) {
         console.log('hi');
         createNewOperand();
-        //b = lastOperand
         evaluate();
-        //createNewOperand()
+        addHistory(operation);
         currentOperand = [];
     } else {
         createNewOperand();
@@ -77,9 +76,8 @@ const evaluate = () => {
     console.log('answer: ' + answer)
     currentOperand = [];
     currentOperand.push(answer);
-    lastOperand= '';
-    console.log("lastOperand = ''")
     a = answer;
+    lastOperand = a;
     console.log("a = " + answer)
 }
 
