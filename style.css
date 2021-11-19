@@ -71,7 +71,7 @@
     border-radius: 5px;
     border: rgb(83, 83, 83) 1.5px solid;
     background: rgb(31,31,31);
-    background: linear-gradient(31deg, rgba(31,31,31,1) 0%, rgba(29,28,33,1) 1%, rgba(40,30,30,1) 100%);
+    background: linear-gradient(31deg, rgba(31,31,31,1) 0%, rgba(29,28,33,1) 20%, rgb(29, 19, 22) 100%);
 }
 
 .display {
@@ -89,7 +89,7 @@
     color: rgb(160, 160, 160);
 }
 
-.result {
+.resultDisplay {
     display: flex;
     justify-content: end;
     height: 60px;
@@ -146,7 +146,7 @@
     font-size: 1.7rem;
 }
 
-#minusKey {
+#minusButton {
     font-size: 0.75rem;
     font-weight: 400;
 }

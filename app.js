@@ -1,117 +1,79 @@
-let currentOperand = [];
-let lastOperand;
-let operation = '';
-let input;
+let operandArray = [];
+let operation;
 let numInput;
-let currentDisplay = '';
 let a;
 let b;
 
 const numKey = document.querySelectorAll('.num');
 const operator = document.querySelectorAll('.operator');
-const result = document.querySelector('.result');
-const history = document.querySelector('.history');
 const equalButton = document.querySelector('#equalButton');
 const plusButton = document.querySelector('#plusButton');
 const minusButton = document.querySelector('#minusButton');
+const clearButton = document.querySelector('#clearButton');
+const resultDisplay = document.querySelector('.resultDisplay');
+const historyDisplay = document.querySelector('.history');
 
-document.onclick = (event) => {
-    let key = event.target;
-    if (key.className === "key num") {
-        numInput = key.innerHTML;
-        newNumInput();
+document.onclick = (e) => {
+    let target = e.target;
+    if (target.className == "key num") newNumInput(e);
+    else if (target.className == "key operator" && operandArray.length > 0) {
+        if (target.innerHTML !== "="){
+            operation = target.innerHTML;
+            console.log("operation set to " + operation);
+        } 
+        createNewOperand();
+        if (target.innerHTML == "="){
+            evaluate();
+        }
+        //createNewOperand();
     }
 }
 
-
-const newNumInput = () => {
-    if (currentOperand[0] == 0) {
-        currentOperand[0] = numInput;
-        console.log( currentOperand);
-    } else {
-        currentOperand.push(numInput);
-        console.log(currentOperand);
-    }
-    result.innerHTML = currentOperand.join('');
+const newNumInput = (e) => {
+    numInput = e.target.innerHTML;
+    operandArray.push(numInput);
+    console.log(operandArray);
+    resultDisplay.innerHTML = operandArray.join('');
 }
 
-plusButton.onclick = () => {
-    //operation = '+';
-    if (a > 0) {
-        console.log('hi');
-        createNewOperand();
-        evaluate();
-        addHistory(operation);
-        currentOperand = [];
-    } else {
-        operation = '+';
-        createNewOperand();
-        a = Number(lastOperand);
-        console.log("a = " + a);
-        addHistory(operation);
-        currentOperand = [];
-    }
-    operation = '+';
-}
-
-minusButton.onclick = () => {
-    //operation = '-';
-    if (a > 0) {
-        console.log('hi');
-        createNewOperand();
-        evaluate();
-        addHistory(operation);
-        currentOperand = [];
-    } else {
-        operation = '-';
-        createNewOperand();
-        a = Number(lastOperand);
-        console.log("a = " + a);
-        addHistory(operation);
-        currentOperand = [];
-    }
-    operation = '-';
+const createNewOperand = () => {
+    if (!a) a = operandArray.join('');
+    else b = operandArray.join('');
+    console.log("a = " + a,'\n',"operandArray =", operandArray,'\n',"b = " + b);
+    operandArray = [];
+    console.log("operandArray =", operandArray);
 }
 
 
-const createNewOperand = () => lastOperand = currentOperand.join('');
-
-
-
-const addHistory = (e) => {
-    history.innerHTML = lastOperand + " " + e;
-}
-
-const clearDisplay = () => {
-    result.innerHTML = '';
-}
-
-const evaluate = () => {
-    createNewOperand();
-    b = Number(lastOperand);
-    console.log("b = " + b);
-    history.innerHTML = history.innerHTML + " " + lastOperand;
-
-    let answer = operate(a, b, operation);
-    result.innerHTML = answer;
-    console.log('answer: ' + answer)
-    currentOperand = [];
-    currentOperand.push(answer);
-    a = answer;
-    lastOperand = a;
-    console.log("a = " + answer)
-}
-
-
-equalButton.onclick = () => {
+/*equalButton.onclick = () => {
     evaluate();
 }
+*/
+
+const evaluate = () => {
+    a = Number(a);
+    b = Number(b);
+    operate(a, b, operation);
+    console.log(a + " " + operation + " " + b + " = "  + operate(a, b, operation));
+}
 
 
 
 
 
 
+
+
+
+
+
+
+clearButton.onclick = () => {
+    operandArray = [];
+    resultDisplay.innerHTML = 0;
+    historyDisplay.innerHTML = "";
+    console.clear();
+}
 
 
 
@@ -122,10 +84,21 @@ const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
 
-
 const operate = (a, b, operation) => {
     if (operation == "+") return add(a, b);
-    if (operation == "-") return subtract(a, b);
-    if (operation == "x") return multiply(a, b);
-    if (operation == "/") return divide(a, b);
+    if (operation == "—") return subtract(a, b);
+    if (operation == "×") return multiply(a, b);
+    if (operation == "÷") return divide(a, b);
 }
+
+
+
+
+
+
+
+
+
+
+
+
