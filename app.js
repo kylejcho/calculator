@@ -11,9 +11,9 @@ const numKey = document.querySelectorAll('.num');
 const operator = document.querySelectorAll('.operator');
 const result = document.querySelector('.result');
 const history = document.querySelector('.history');
-const equalButton = document.querySelector('#equalKey');
+const equalButton = document.querySelector('#equalButton');
 const plusButton = document.querySelector('#plusButton');
-
+const minusButton = document.querySelector('#minusButton');
 
 document.onclick = (event) => {
     let key = event.target;
@@ -36,7 +36,7 @@ const newNumInput = () => {
 }
 
 plusButton.onclick = () => {
-    operation = '+';
+    //operation = '+';
     if (a > 0) {
         console.log('hi');
         createNewOperand();
@@ -44,12 +44,33 @@ plusButton.onclick = () => {
         addHistory(operation);
         currentOperand = [];
     } else {
+        operation = '+';
         createNewOperand();
         a = Number(lastOperand);
         console.log("a = " + a);
         addHistory(operation);
         currentOperand = [];
     }
+    operation = '+';
+}
+
+minusButton.onclick = () => {
+    //operation = '-';
+    if (a > 0) {
+        console.log('hi');
+        createNewOperand();
+        evaluate();
+        addHistory(operation);
+        currentOperand = [];
+    } else {
+        operation = '-';
+        createNewOperand();
+        a = Number(lastOperand);
+        console.log("a = " + a);
+        addHistory(operation);
+        currentOperand = [];
+    }
+    operation = '-';
 }
 
 
@@ -87,10 +108,20 @@ equalButton.onclick = () => {
 }
 
 
+
+
+
+
+
+
+
+
+
 const add = (a, b) => a + b;
 const subtract = (a, b) => a - b;
 const multiply = (a, b) => a * b;
 const divide = (a, b) => a / b;
+
 
 const operate = (a, b, operation) => {
     if (operation == "+") return add(a, b);
