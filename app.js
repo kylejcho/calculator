@@ -11,6 +11,7 @@ const plusButton = document.querySelector('#plusButton');
 const minusButton = document.querySelector('#minusButton');
 const clearButton = document.querySelector('#clearButton');
 const squareButton = document.querySelector('#squareButton');
+const deleteButton = document.querySelector('#deleteButton');
 const resultDisplay = document.querySelector('.resultDisplay');
 const historyDisplay = document.querySelector('.history');
 
@@ -109,7 +110,14 @@ squareButton.onclick = () => {
         resultDisplay.innerHTML = answer;
         a = answer;
         b = '';
-    } else {
+    } else if (a != '' && b == '') {
+        a = Number(a);
+        historyDisplay.innerHTML = ' sqr(' + a + ') =';
+        let answer = Math.round((a*a)*1000000)/1000000;
+        a = answer;
+        resultDisplay.innerHTML = answer;
+    }
+    else {
         createNewOperand();
         a = Number(a);
         historyDisplay.innerHTML = a + ' ' + operation + ' sqr(' + b + ') =';
@@ -119,6 +127,21 @@ squareButton.onclick = () => {
         resultDisplay.innerHTML = answer;
         b = '';
     }
+}
+
+
+deleteButton.onclick = () => {
+    let result = resultDisplay.innerHTML;
+    resultDisplay.innerHTML = result.substring(0, result.length - 1);
+    if (resultDisplay.innerHTML.length > 0) {
+        operandArray.pop();
+    } if (operandArray.length = 1) {
+        operandArray = resultDisplay.innerHTML.split('');
+    }
+    console.log(operandArray);
+    a = resultDisplay.innerHTML;
+    console.log("AAAA ==="+ a);
+    console.log("b =" + b)
 }
 
 
