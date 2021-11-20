@@ -14,12 +14,12 @@ const historyDisplay = document.querySelector('.history');
 
 document.onclick = (e) => {
     let target = e.target;
-    if (target.className == "key num") newNumInput(e);
-
+    if (target.className == "key num" ) newNumInput(e)
     else if (target.className == "key operator" && operandArray.length || a > 0) {
         createNewOperand();
         if (target.innerHTML !== "=" && b == ''){
             operation = target.innerHTML;
+            historyDisplay.innerHTML = a + " " + operation;
             console.log("operation set to " + operation);
         } 
         if (target.innerHTML !== "=" && b != '') {
@@ -27,7 +27,6 @@ document.onclick = (e) => {
             evaluate();
             operation = target.innerHTML;
         }
-
 
         if (target.innerHTML == "="){
             evaluate();
@@ -40,7 +39,7 @@ const newNumInput = (e) => {
     operandArray.push(numInput);
     console.log(operandArray);
     resultDisplay.innerHTML = operandArray.join('');
-    resize();
+    //resize();
 }
 
 const createNewOperand = () => {
@@ -55,6 +54,7 @@ const createNewOperand = () => {
 const evaluate = () => {
     a = Number(a);
     b = Number(b);
+    historyDisplay.innerHTML += ' ' + b;
     let answer = Math.round(operate(a, b, operation)*10000000000)/10000000000;
     console.log(a + " " + operation + " " + b + " = "  + answer);
     resultDisplay.innerHTML = answer;
@@ -74,8 +74,6 @@ const resize = () => {
         resultDisplay.style.fontSize = fontSize +"px";
     } 
 }
-
-
 
 clearButton.onclick = () => {
     operandArray = [];
@@ -97,7 +95,8 @@ const divide = (a, b) => a / b;
 
 const operate = (a, b, operation) => {
     if (operation == "+") return add(a, b);
-    if (operation == "—") return subtract(a, b);
+    if (operation == "-") return subtract(a, b);
     if (operation == "×") return multiply(a, b);
     if (operation == "÷") return divide(a, b);
 }
+
