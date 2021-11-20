@@ -3,9 +3,8 @@ let operation;
 let numInput;
 let a = '';
 let b = '';
+let fontSize = 40;
 
-const numKey = document.querySelectorAll('.num');
-const operator = document.querySelectorAll('.operator');
 const equalButton = document.querySelector('#equalButton');
 const plusButton = document.querySelector('#plusButton');
 const minusButton = document.querySelector('#minusButton');
@@ -16,7 +15,7 @@ const historyDisplay = document.querySelector('.history');
 document.onclick = (e) => {
     let target = e.target;
     if (target.className == "key num") newNumInput(e);
-    
+
     else if (target.className == "key operator" && operandArray.length || a > 0) {
         createNewOperand();
         if (target.innerHTML !== "=" && b == ''){
@@ -29,7 +28,6 @@ document.onclick = (e) => {
             operation = target.innerHTML;
         }
 
-        //createNewOperand();
 
         if (target.innerHTML == "="){
             evaluate();
@@ -42,6 +40,7 @@ const newNumInput = (e) => {
     operandArray.push(numInput);
     console.log(operandArray);
     resultDisplay.innerHTML = operandArray.join('');
+    resize();
 }
 
 const createNewOperand = () => {
@@ -56,10 +55,10 @@ const createNewOperand = () => {
 const evaluate = () => {
     a = Number(a);
     b = Number(b);
-    operate(a, b, operation);
-    console.log(a + " " + operation + " " + b + " = "  + operate(a, b, operation));
-    resultDisplay.innerHTML = operate(a, b, operation);
-    a = operate(a, b, operation);
+    let answer = Math.round(operate(a, b, operation)*10000000000)/10000000000;
+    console.log(a + " " + operation + " " + b + " = "  + answer);
+    resultDisplay.innerHTML = answer;
+    a = answer;
     b = '';
     console.log("a = " + a);
     console.log("b = " + b);
@@ -69,10 +68,12 @@ const evaluate = () => {
 
 
 
-
-
-
-
+const resize = () => {
+    if (resultDisplay.innerHTML.length > 10 && fontSize > 25) {
+        fontSize -= 1.75;
+        resultDisplay.style.fontSize = fontSize +"px";
+    } 
+}
 
 
 
@@ -100,15 +101,3 @@ const operate = (a, b, operation) => {
     if (operation == "×") return multiply(a, b);
     if (operation == "÷") return divide(a, b);
 }
-
-
-
-
-
-
-
-
-
-
-
-
