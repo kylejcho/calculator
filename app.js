@@ -110,7 +110,7 @@ squareButton.onclick = () => {
         resultDisplay.innerHTML = answer;
         a = answer;
         b = '';
-    } else if (a != '' && b == '') {
+    } else if (a != '' && b == '' && historyDisplay.innerHTML.includes("=")) {
         a = Number(a);
         historyDisplay.innerHTML = ' sqr(' + a + ') =';
         let answer = Math.round((a*a)*1000000)/1000000;
