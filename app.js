@@ -5,6 +5,8 @@ let a = '';
 let b = '';
 let fontSize = 40;
 
+
+const keypad = document.querySelector('.keypad');
 const equalButton = document.querySelector('#equalButton');
 const plusButton = document.querySelector('#plusButton');
 const minusButton = document.querySelector('#minusButton');
@@ -12,7 +14,7 @@ const clearButton = document.querySelector('#clearButton');
 const resultDisplay = document.querySelector('.resultDisplay');
 const historyDisplay = document.querySelector('.history');
 
-document.onclick = (e) => {
+keypad.onclick = (e) => {
     let target = e.target;
     if (target.className == "key num" ) newNumInput(e)
     else if (target.className == "key operator" && operandArray.length || a > 0) {
@@ -26,8 +28,8 @@ document.onclick = (e) => {
             console.log("operation set to " + operation);
             evaluate();
             operation = target.innerHTML;
+            historyDisplay.innerHTML = a + " " + operation;
         }
-
         if (target.innerHTML == "="){
             evaluate();
         }
@@ -54,7 +56,7 @@ const createNewOperand = () => {
 const evaluate = () => {
     a = Number(a);
     b = Number(b);
-    historyDisplay.innerHTML += ' ' + b;
+    historyDisplay.innerHTML += ' ' + b + ' =';
     let answer = Math.round(operate(a, b, operation)*10000000000)/10000000000;
     console.log(a + " " + operation + " " + b + " = "  + answer);
     resultDisplay.innerHTML = answer;
