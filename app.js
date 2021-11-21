@@ -14,34 +14,36 @@ const squareButton = document.querySelector('#squareButton');
 const deleteButton = document.querySelector('#deleteButton');
 const signButton = document.querySelector('#signButton')
 const resultDisplay = document.querySelector('.resultDisplay');
-const historyDisplay = document.querySelector('.history');
+const history = document.querySelector('.history');
 
 
 keypad.onclick = (e) => {
-    let target = e.target;
-    if (target.className == "key num" && historyDisplay.innerHTML.includes("=")) clear();
-    if (target.className == "key num" ) newNumInput(e);
-
-    else if (target.className == "key operator" && operandArray.length || target.className == "key operator" && a != 0 ) {
+    let t = e.target;
+    if (t.className == "key num") {
+        if (history.innerHTML.includes("=") || history.innerHTML == resultDisplay.innerHTML) clear();
+        newNumInput(e);
+    }
+    if (t.className == "key operator") {
         createNewOperand();
-        if (target.innerHTML !== "=" && b == ''){
-            operation = target.innerHTML;
-            historyDisplay.innerHTML = a + " " + operation;
+        if (t.innerHTML == "="){
+            if (b == '') {
+                history.innerHTML = resultDisplay.innerHTML;
+                console.log("a = " + a)
+                console.log("b = " + b)
+            } else evaluate();
+        }
+
+        else if (b == ''){
+            operation = t.innerHTML;
+            history.innerHTML = a + " " + operation;
             console.log("operation set to " + operation);
         } 
-        if (target.innerHTML !== "=" && b != '') {
+
+        else {
             console.log("operation set to " + operation);
             evaluate();
-            operation = target.innerHTML;
-            historyDisplay.innerHTML = a + " " + operation;
-        }
-        if (target.innerHTML == "=" && b != ''){
-            evaluate();
-            
-        } else if (target.innerHTML == "=" && b == '') {
-            historyDisplay.innerHTML = resultDisplay.innerHTML;
-            console.log("a = " + a)
-            console.log("b = " + b)
+            operation = t.innerHTML;
+            history.innerHTML = a + " " + operation;
         }
     }
 }
@@ -66,7 +68,7 @@ const createNewOperand = () => {
 const evaluate = () => {
     a = Number(a);
     b = Number(b);
-    historyDisplay.innerHTML += ' ' + b + ' =';
+    history.innerHTML += ' ' + b + ' =';
     let answer = Math.round(operate(a, b, operation)*1000000)/1000000;
     console.log(a + " " + operation + " " + b + " = "  + answer);
     resultDisplay.innerHTML = answer;
@@ -76,9 +78,6 @@ const evaluate = () => {
     console.log("b = " + b);
     console.log("answer = " + answer);
 }
-
-
-
 
 
 const resize = () => {
@@ -95,7 +94,7 @@ clearButton.onclick = () => {
 const clear = () => {
     operandArray = [];
     resultDisplay.innerHTML = 0;
-    historyDisplay.innerHTML = "";
+    history.innerHTML = "";
     a = '';
     b = '';
     console.clear();
@@ -107,28 +106,28 @@ squareButton.onclick = () => {
         createNewOperand();
         a = Number(a);
         b = a;
-        historyDisplay.innerHTML += ' sqr(' + b + ') =';
+        history.innerHTML += ' sqr(' + b + ') =';
         let answer = Math.round(operate(a, b, operation)*1000000)/1000000;
         console.log(b + "^2 = "  + answer);
         resultDisplay.innerHTML = answer;
         a = answer;
         b = '';
-    } else if (a != '' && b == '' && historyDisplay.innerHTML.includes("=")) {
+    } else if (a != '' && b == '' && history.innerHTML.includes("=")) {
         a = Number(a);
-        historyDisplay.innerHTML = ' sqr(' + a + ') =';
+        history.innerHTML = ' sqr(' + a + ') =';
         let answer = Math.round((a*a)*1000000)/1000000;
         a = answer;
         resultDisplay.innerHTML = answer;
-    } else if (a != '' && !historyDisplay.innerHTML.includes(" ")) {
+    } else if (a != '' && !history.innerHTML.includes(" ")) {
         a = Number(a);
-        historyDisplay.innerHTML = ' sqr(' + a + ') =';
+        history.innerHTML = ' sqr(' + a + ') =';
         let answer = Math.round((a*a)*1000000)/1000000;
         a = answer;
         resultDisplay.innerHTML = answer;
     } else {
         createNewOperand();
         a = Number(a);
-        historyDisplay.innerHTML = a + ' ' + operation + ' sqr(' + b + ') =';
+        history.innerHTML = a + ' ' + operation + ' sqr(' + b + ') =';
         b = Math.round((b*b)*1000000)/1000000;
         let answer = Math.round(operate(a, b, operation)*1000000)/1000000;
         a = answer;
