@@ -12,6 +12,7 @@ const minusButton = document.querySelector('#minusButton');
 const clearButton = document.querySelector('#clearButton');
 const squareButton = document.querySelector('#squareButton');
 const deleteButton = document.querySelector('#deleteButton');
+const signButton = document.querySelector('#signButton')
 const resultDisplay = document.querySelector('.resultDisplay');
 const historyDisplay = document.querySelector('.history');
 
@@ -39,6 +40,8 @@ keypad.onclick = (e) => {
             
         } else if (target.innerHTML == "=" && b == '') {
             historyDisplay.innerHTML = resultDisplay.innerHTML;
+            console.log("a = " + a)
+            console.log("b = " + b)
         }
     }
 }
@@ -100,7 +103,7 @@ const clear = () => {
 
 
 squareButton.onclick = () => {
-    if (a=='' && b =='') {
+    if (a=='') {
         createNewOperand();
         a = Number(a);
         b = a;
@@ -116,8 +119,13 @@ squareButton.onclick = () => {
         let answer = Math.round((a*a)*1000000)/1000000;
         a = answer;
         resultDisplay.innerHTML = answer;
-    }
-    else {
+    } else if (a != '' && !historyDisplay.innerHTML.includes(" ")) {
+        a = Number(a);
+        historyDisplay.innerHTML = ' sqr(' + a + ') =';
+        let answer = Math.round((a*a)*1000000)/1000000;
+        a = answer;
+        resultDisplay.innerHTML = answer;
+    } else {
         createNewOperand();
         a = Number(a);
         historyDisplay.innerHTML = a + ' ' + operation + ' sqr(' + b + ') =';
@@ -131,6 +139,7 @@ squareButton.onclick = () => {
 
 
 deleteButton.onclick = () => {
+    a = '';
     let result = resultDisplay.innerHTML;
     resultDisplay.innerHTML = result.substring(0, result.length - 1);
     if (resultDisplay.innerHTML.length > 0) {
@@ -139,9 +148,29 @@ deleteButton.onclick = () => {
         operandArray = resultDisplay.innerHTML.split('');
     }
     console.log(operandArray);
-    a = resultDisplay.innerHTML;
-    console.log("AAAA ==="+ a);
-    console.log("b =" + b)
+    console.log("a = " + a);
+    console.log("b = " + b);
+}
+
+
+signButton.onclick = () => {
+    if (operandArray.length > 0) {
+        if (resultDisplay.innerHTML.includes('-')) {
+            console.log('pppp')
+            operandArray.shift();
+        } else operandArray.unshift("-");
+        
+        console.log(operandArray)
+        resultDisplay.innerHTML = operandArray.join('');
+        console.log("a = " + a);
+        console.log("b = " + b); 
+    } 
+    
+    else {
+        a = -1 * a;
+        console.log(a);
+        resultDisplay.innerHTML = a;
+    }
 }
 
 
