@@ -182,7 +182,7 @@ html, body {
     font-weight: 400;
 }
 
-@media all and (max-width: 800px) {
+@media all and (max-width: 500px) {
     * {
         background-color: #000000;
     }
