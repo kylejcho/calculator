@@ -275,9 +275,5 @@ html, body {
     #signButton:active {
         background-color: #414141;
     }
-    
-    #minusButton {
-        font-size: 3rem;
-        font-weight: 200;
-    }
+
 }
