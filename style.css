@@ -16,12 +16,22 @@
     background-color: rgb(5, 5, 5);
 }
 
+.calculator {
+    height: 430px;
+    width: 350px;
+    border-radius: 5px;
+    border: rgb(83, 83, 83) 1.5px solid;
+    background: rgb(31,31,31);
+    background: linear-gradient(31deg, rgba(31,31,31,1) 0%, rgba(29,28,33,1) 20%, rgb(29, 19, 22) 100%);
+} 
+
 .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 40px;
+    height: 45px;
     width: 100%;
+    padding-bottom: 10px;
     border-radius: 5px;
 }
 
@@ -62,16 +72,7 @@
 
 .spacer {
     height: 20px;
-    width: 155px;
-}
-
-.calculator {
-    height: 355px;
-    width: 290px;
-    border-radius: 5px;
-    border: rgb(83, 83, 83) 1.5px solid;
-    background: rgb(31,31,31);
-    background: linear-gradient(31deg, rgba(31,31,31,1) 0%, rgba(29,28,33,1) 20%, rgb(29, 19, 22) 100%);
+    width: 210px;
 }
 
 .display {
@@ -84,7 +85,7 @@
     display: flex;
     justify-content: end;
     height: 20px;
-    width : 275px;
+    width : 330px;
     font-size: 0.8rem;
     color: rgb(160, 160, 160);
 }
@@ -92,8 +93,8 @@
 .resultDisplay {
     display: flex;
     justify-content: end;
-    height: 60px;
-    width : 280px;
+    height: 50px;
+    width : 335px;
     font-size: 2.5rem;
     font-weight: 600;
     overflow: hidden;
@@ -102,17 +103,17 @@
 .keypad {
     display: grid;
     grid-template: repeat(5, 1fr)/repeat( 4, 1fr);
-    height: 220px;
-    width: 285px;
+    height: 282px;
+    width: 347px;
     border-radius: 5px;
-    border: 2.5px solid #00000000;
+    border: 1.5px solid #00000000;
 }
 
 .key {
-    margin: 0.8px;
+    margin: 1px;
     background-color: #3a3639;
-    border: none;
-    border-radius: 5px;
+    border: 1.5px solid #312e30;
+    border-radius: 4px;
 }
 
 .key:hover {
@@ -124,6 +125,7 @@
 }
 .num {
     background-color: #464346;
+    border: 1.5px solid #3d3b3d;
 } 
 
 .num:hover {
@@ -136,6 +138,7 @@
 
 #signButton {
     background-color: #464346;
+    border: 1.5px solid #3d3b3d;
 }
 
 #signButton:hover {
