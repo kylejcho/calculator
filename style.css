@@ -95,10 +95,10 @@
 }
 
 .resultDisplay {
-    display: -webkit-box;
+ 
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: flex-end;
+
     -ms-flex-pack: flex-end;
     justify-content: flex-end;
     height: 50px;
