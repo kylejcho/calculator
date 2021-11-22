@@ -9,10 +9,9 @@
 }
 
 html, body {
-    overflow-x: hidden;
-  }
-  body {
-    position: relative;
+    margin: 0;
+    height: 100%;
+    overflow: hidden
   }
 
 .main {
@@ -184,17 +183,22 @@ html, body {
 }
 
 @media all and (max-width: 800px) {
+    body {
+        background-color: #000000;
+    }
+    
+
     .main {
-        padding-top: 5vh;
-        height: 95vh;
+        padding-top: 1vh;
+        height: 99vh;
     }
 
     .calculator {
         height: 550px;
         width: 375px;
         border: none;
-        background: rgb(0, 0, 0);
-        background: linear-gradient(31deg, rgba(31, 31, 31, 0) 0%, rgba(29, 28, 33, 0.075) 20%, rgba(255, 255, 255, 0) 100%);
+        background-color: rgb(0, 0, 0);
+        background: linear-gradient(31deg, rgba(31, 31, 31, 0) 0%, rgba(0, 0, 0, 0) 20%, rgba(255, 255, 255, 0) 100%);
     } 
     
     .header {
@@ -235,5 +239,45 @@ html, body {
     .key {
         font-size: 1.5rem;
         margin: 2px;
+        border-radius: 5px;
+        background-color: #3b3b3b;
+    }
+
+    .key:hover {
+        background-color: #3b3b3b;
+    }
+    
+    .key:active {
+        background-color: #666666;
+    }
+    .num {
+        background-color: #525252;
+        border: 1.5px solid #525252;
+    } 
+    
+    .num:hover {
+        background-color: #525252;
+    }
+    
+    .num:active {
+        background-color: #414141;
+    }
+    
+    #signButton {
+        background-color: #525252;
+        border: 1.5px solid #525252;
+    }
+    
+    #signButton:hover {
+        background-color: #525252;
+    }
+    
+    #signButton:active {
+        background-color: #414141;
+    }
+    
+    #minusButton {
+        font-size: 3rem;
+        font-weight: 200;
     }
 }
