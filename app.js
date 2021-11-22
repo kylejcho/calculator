@@ -26,7 +26,16 @@ keypad.onclick = (e) => {
 const numClick = (e) => {
     if (history.innerHTML.includes("=") || history.innerHTML == display.innerHTML) {
         clear();
-    }
+    } 
+    if (e.target.innerHTML == '.') {
+        if (display.innerHTML.includes('.')) {
+            return;
+        } else if (display.innerHTML == "0") {
+            operandArray.push('0');
+        }
+    } else if (e.target.innerHTML == '0' && display.innerHTML == '0') {
+        return;
+    } 
     operandArray.push(e.target.innerHTML);
     display.innerHTML = operandArray.join('');
 }
@@ -63,12 +72,16 @@ const evaluate = () => {
     a = Number(a);
     b = Number(b);
     history.innerHTML += ' ' + b + ' =';
-    a = Math.round(operate(a, b, operation)*1000000)/1000000;
+    a = round(operate(a, b, operation));
     display.innerHTML = a;
     b = '';
     if (display.innerHTML == "NaN" || display.innerHTML == "Infinity") {
         display.innerHTML = "Error";
     }
+}
+
+const round = (answer) => {
+    return Math.round(answer*1000000)/1000000;
 }
 
 const adjustOperation = (e) => {
@@ -95,22 +108,22 @@ squareButton.onclick = () => {
         } else {
             history.innerHTML += ' sqr(' + a + ') =';
         }
-        a = Math.round((a*a)*1000000)/1000000;
-        display.innerHTML = a;
-    } else if (a != '' && b == '' && history.innerHTML.includes("=") || a != '' && !history.innerHTML.includes(" ")) {
-        a = Number(a);
-        history.innerHTML = ' sqr(' + a + ') =';
-        a = Math.round((a*a)*1000000)/1000000;
-        display.innerHTML = a;
-    } else {
-        createNewOperand();
-        a = Number(a);
-        history.innerHTML = a + ' ' + operation + ' sqr(' + b + ') =';
-        b = b*b;
-        a = Math.round(operate(a, b, operation)*1000000)/1000000;
-        display.innerHTML = a;
-        b = '';
+        a = round(a * a);   
+    } else if (a != '') {
+        if (history.innerHTML.includes("=") || !history.innerHTML.includes(" ")) {
+            a = Number(a);
+            history.innerHTML = ' sqr(' + a + ') =';
+            a = round(a * a); 
+        } else {
+            createNewOperand();
+            a = Number(a);
+            history.innerHTML = a + ' ' + operation + ' sqr(' + b + ') =';
+            b = b * b;
+            a = round(operate(a, b, operation));
+            b = '';
+        }
     }
+    display.innerHTML = a; 
 }
 
 deleteButton.onclick = () => {
