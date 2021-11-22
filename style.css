@@ -82,10 +82,8 @@
 }
 
 .history {
-    display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: flex-end;
     -ms-flex-pack: flex-end;
     justify-content: flex-end;
     height: 20px;
@@ -95,10 +93,8 @@
 }
 
 .resultDisplay {
- 
     display: -ms-flexbox;
     display: flex;
-
     -ms-flex-pack: flex-end;
     justify-content: flex-end;
     height: 50px;
