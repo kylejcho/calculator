@@ -176,7 +176,7 @@
     font-weight: 400;
 }
 
-@media all and (max-width: 800px) {
+@media all and (max-width: 1000px) {
     .calculator {
         height: 500px;
         width: 360px;
