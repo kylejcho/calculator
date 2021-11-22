@@ -5,9 +5,6 @@ let a = '';
 let b = '';
 
 const keypad = document.querySelector('.keypad');
-const equalButton = document.querySelector('#equalButton');
-const plusButton = document.querySelector('#plusButton');
-const minusButton = document.querySelector('#minusButton');
 const clearButton = document.querySelector('#clearButton');
 const squareButton = document.querySelector('#squareButton');
 const deleteButton = document.querySelector('#deleteButton');
@@ -42,16 +39,13 @@ keypad.onclick = (e) => {
 const newNumInput = (e) => {
     numInput = e.target.innerHTML;
     operandArray.push(numInput);
-    console.log(operandArray);
     resultDisplay.innerHTML = operandArray.join('');
 }
 
 const createNewOperand = () => {
     if (a == '') a = operandArray.join('');
     else b = operandArray.join('');
-    console.log("a = " + a + " b = " + b);
     operandArray = [];
-    console.log("operandArray =", operandArray);
 }
 
 
@@ -62,7 +56,6 @@ const evaluate = () => {
     a = Math.round(operate(a, b, operation)*1000000)/1000000;
     resultDisplay.innerHTML = a;
     b = '';
-    console.log("a = " + a + " b = " + b);
     if (resultDisplay.innerHTML == "NaN" || resultDisplay.innerHTML == "Infinity") resultDisplay.innerHTML = "Error";
 }
 
@@ -77,7 +70,6 @@ const clear = () => {
     history.innerHTML = "";
     a = '';
     b = '';
-    console.clear();
 }
 
 
@@ -112,9 +104,6 @@ deleteButton.onclick = () => {
     resultDisplay.innerHTML = result.substring(0, result.length - 1);
     if (resultDisplay.innerHTML.length > 0) operandArray.pop();
     if (operandArray.length = 1) operandArray = resultDisplay.innerHTML.split('');
-    console.log(operandArray);
-    console.log("a = " + a);
-    console.log("b = " + b);
 }
 
 
@@ -122,13 +111,9 @@ signButton.onclick = () => {
     if (operandArray.length > 0) {
         if (resultDisplay.innerHTML.includes('-')) operandArray.shift();
         else operandArray.unshift("-");
-        console.log(operandArray)
         resultDisplay.innerHTML = operandArray.join('');
-        console.log("a = " + a);
-        console.log("b = " + b); 
     } else {
         a = -1 * a;
-        console.log(a);
         resultDisplay.innerHTML = a;
     }
 }
