@@ -26,21 +26,12 @@ keypad.onclick = (e) => {
     if (t.className == "key operator") {
         createNewOperand();
         if (t.innerHTML == "="){
-            if (b == '') {
-                history.innerHTML = resultDisplay.innerHTML;
-                console.log("a = " + a)
-                console.log("b = " + b)
-            } else evaluate();
-        }
-
-        else if (b == ''){
+            if (b == '') history.innerHTML = resultDisplay.innerHTML;
+            else evaluate();
+        } else if (b == '') {
             operation = t.innerHTML;
             history.innerHTML = a + " " + operation;
-            console.log("operation set to " + operation);
-        } 
-
-        else {
-            console.log("operation set to " + operation);
+        } else {
             evaluate();
             operation = t.innerHTML;
             history.innerHTML = a + " " + operation;
@@ -53,13 +44,12 @@ const newNumInput = (e) => {
     operandArray.push(numInput);
     console.log(operandArray);
     resultDisplay.innerHTML = operandArray.join('');
-    //resize();
 }
 
 const createNewOperand = () => {
     if (a == '') a = operandArray.join('');
     else b = operandArray.join('');
-    console.log("a = " + a,'\n',"operandArray =", operandArray,'\n',"b = " + b);
+    console.log("a = " + a + " b = " + b);
     operandArray = [];
     console.log("operandArray =", operandArray);
 }
@@ -69,23 +59,12 @@ const evaluate = () => {
     a = Number(a);
     b = Number(b);
     history.innerHTML += ' ' + b + ' =';
-    let answer = Math.round(operate(a, b, operation)*1000000)/1000000;
-    console.log(a + " " + operation + " " + b + " = "  + answer);
-    resultDisplay.innerHTML = answer;
-    a = answer;
+    a = Math.round(operate(a, b, operation)*1000000)/1000000;
+    resultDisplay.innerHTML = a;
     b = '';
-    console.log("a = " + a);
-    console.log("b = " + b);
-    console.log("answer = " + answer);
+    console.log("a = " + a + " b = " + b);
 }
 
-
-const resize = () => {
-    if (resultDisplay.innerHTML.length > 10 && fontSize > 25) {
-        fontSize -= 1.75;
-        resultDisplay.style.fontSize = fontSize +"px";
-    } 
-}
 
 clearButton.onclick = () => {
     clear();
@@ -108,7 +87,6 @@ squareButton.onclick = () => {
         b = a;
         history.innerHTML += ' sqr(' + b + ') =';
         let answer = Math.round(operate(a, b, operation)*1000000)/1000000;
-        console.log(b + "^2 = "  + answer);
         resultDisplay.innerHTML = answer;
         a = answer;
         b = '';
