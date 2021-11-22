@@ -177,6 +177,14 @@
 }
 
 @media all and (max-width: 800px) {
+    .main {
+        padding-top: 15vh;
+        display: flex;
+        justify-content: center;
+        height: 85vh;
+        background-color: rgb(255, 255, 255);
+    }
+
     .calculator {
         height: 500px;
         width: 360px;
@@ -214,27 +222,16 @@
     }
     
     .history {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-pack: flex-end;
-        justify-content: flex-end;
         height: 20px;
         width : 330px;
         font-size: 1rem;
-        color: rgb(160, 160, 160);
         padding-top: 10px;
     }
     
     .resultDisplay {
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-pack: flex-end;
-        justify-content: flex-end;
         height: 60px;
         width : 335px;
         font-size: 3rem;
-        font-weight: 600;
-        overflow: hidden;
     }
     
     .keypad {
