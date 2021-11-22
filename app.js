@@ -3,7 +3,6 @@ let operation;
 let numInput;
 let a = '';
 let b = '';
-let fontSize = 40;
 
 const keypad = document.querySelector('.keypad');
 const equalButton = document.querySelector('#equalButton');
@@ -19,11 +18,12 @@ const history = document.querySelector('.history');
 
 keypad.onclick = (e) => {
     let t = e.target;
-    if (t.className == "key num") {
+    if (resultDisplay.innerHTML == "Error") clear();
+    else if (t.className == "key num") {
         if (history.innerHTML.includes("=") || history.innerHTML == resultDisplay.innerHTML) clear();
         newNumInput(e);
-    }
-    if (t.className == "key operator") {
+    } else if (t.className == "key operator" && resultDisplay.innerHTML.length>0) {
+        if (resultDisplay.innerHTML == 0) operandArray = [0];
         createNewOperand();
         if (t.innerHTML == "="){
             if (b == '') history.innerHTML = resultDisplay.innerHTML;
@@ -31,7 +31,7 @@ keypad.onclick = (e) => {
         } else if (b == '') {
             operation = t.innerHTML;
             history.innerHTML = a + " " + operation;
-        } else {
+        }  else {
             evaluate();
             operation = t.innerHTML;
             history.innerHTML = a + " " + operation;
@@ -63,6 +63,7 @@ const evaluate = () => {
     resultDisplay.innerHTML = a;
     b = '';
     console.log("a = " + a + " b = " + b);
+    if (resultDisplay.innerHTML == "NaN" || resultDisplay.innerHTML == "Infinity") resultDisplay.innerHTML = "Error";
 }
 
 
@@ -84,32 +85,22 @@ squareButton.onclick = () => {
     if (a=='') {
         createNewOperand();
         a = Number(a);
-        b = a;
-        history.innerHTML += ' sqr(' + b + ') =';
-        let answer = Math.round(operate(a, b, operation)*1000000)/1000000;
-        resultDisplay.innerHTML = answer;
-        a = answer;
-        b = '';
-    } else if (a != '' && b == '' && history.innerHTML.includes("=")) {
+        if (history.innerHTML.length > 0) history.innerHTML = ' sqr(' + a + ') =';
+        else history.innerHTML += ' sqr(' + a + ') =';
+        a = Math.round((a*a)*1000000)/1000000;
+        resultDisplay.innerHTML = a;
+    } else if (a != '' && b == '' && history.innerHTML.includes("=") || a != '' && !history.innerHTML.includes(" ")) {
         a = Number(a);
         history.innerHTML = ' sqr(' + a + ') =';
-        let answer = Math.round((a*a)*1000000)/1000000;
-        a = answer;
-        resultDisplay.innerHTML = answer;
-    } else if (a != '' && !history.innerHTML.includes(" ")) {
-        a = Number(a);
-        history.innerHTML = ' sqr(' + a + ') =';
-        let answer = Math.round((a*a)*1000000)/1000000;
-        a = answer;
-        resultDisplay.innerHTML = answer;
+        a = Math.round((a*a)*1000000)/1000000;
+        resultDisplay.innerHTML = a;
     } else {
         createNewOperand();
         a = Number(a);
         history.innerHTML = a + ' ' + operation + ' sqr(' + b + ') =';
-        b = Math.round((b*b)*1000000)/1000000;
-        let answer = Math.round(operate(a, b, operation)*1000000)/1000000;
-        a = answer;
-        resultDisplay.innerHTML = answer;
+        b = b*b;
+        a = Math.round(operate(a, b, operation)*1000000)/1000000;
+        resultDisplay.innerHTML = a;
         b = '';
     }
 }
@@ -119,11 +110,8 @@ deleteButton.onclick = () => {
     a = '';
     let result = resultDisplay.innerHTML;
     resultDisplay.innerHTML = result.substring(0, result.length - 1);
-    if (resultDisplay.innerHTML.length > 0) {
-        operandArray.pop();
-    } if (operandArray.length = 1) {
-        operandArray = resultDisplay.innerHTML.split('');
-    }
+    if (resultDisplay.innerHTML.length > 0) operandArray.pop();
+    if (operandArray.length = 1) operandArray = resultDisplay.innerHTML.split('');
     console.log(operandArray);
     console.log("a = " + a);
     console.log("b = " + b);
@@ -132,18 +120,13 @@ deleteButton.onclick = () => {
 
 signButton.onclick = () => {
     if (operandArray.length > 0) {
-        if (resultDisplay.innerHTML.includes('-')) {
-            console.log('pppp')
-            operandArray.shift();
-        } else operandArray.unshift("-");
-        
+        if (resultDisplay.innerHTML.includes('-')) operandArray.shift();
+        else operandArray.unshift("-");
         console.log(operandArray)
         resultDisplay.innerHTML = operandArray.join('');
         console.log("a = " + a);
         console.log("b = " + b); 
-    } 
-    
-    else {
+    } else {
         a = -1 * a;
         console.log(a);
         resultDisplay.innerHTML = a;
