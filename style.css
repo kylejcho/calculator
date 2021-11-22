@@ -83,8 +83,10 @@
 
 .history {
     display: -webkit-box;
-    -webkit-box-pack: end; 
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: flex-end;
+    -ms-flex-pack: flex-end;
     justify-content: flex-end;
     height: 20px;
     width : 330px;
@@ -94,8 +96,10 @@
 
 .resultDisplay {
     display: -webkit-box;
-    -webkit-box-pack: end; 
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: flex-end;
+    -ms-flex-pack: flex-end;
     justify-content: flex-end;
     height: 50px;
     width : 335px;
