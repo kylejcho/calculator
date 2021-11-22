@@ -8,12 +8,6 @@
     margin: 0;
 }
 
-html, body {
-    margin: 0;
-    height: 100%;
-    overflow: hidden
-  }
-
 .main {
     padding-top: 15vh;
     display: flex;
@@ -180,4 +174,80 @@ html, body {
 #minusButton {
     font-size: 1rem;
     font-weight: 400;
+}
+
+@media all and (max-width: 800px) {
+    .calculator {
+        height: 500px;
+        width: 360px;
+    } 
+    
+    .header {
+        height: 50px;
+        width: 100%;
+
+    }
+    
+    .settingsButton {
+        width: 0;
+        margin: 0;
+        padding: 0;
+        visibility: hidden;
+    }
+
+    
+    .title {
+        display: flex;
+        align-items: center;
+        font-size: 1.4rem;
+        font-weight: 600;
+        height: 30px;
+        width: 90px;
+    }
+    
+    .spacer {
+        width: 235px;
+    }
+    
+    .display {
+        height: 100px;
+    }
+    
+    .history {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: flex-end;
+        justify-content: flex-end;
+        height: 20px;
+        width : 330px;
+        font-size: 1rem;
+        color: rgb(160, 160, 160);
+        padding-top: 10px;
+    }
+    
+    .resultDisplay {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: flex-end;
+        justify-content: flex-end;
+        height: 60px;
+        width : 335px;
+        font-size: 3rem;
+        font-weight: 600;
+        overflow: hidden;
+    }
+    
+    .keypad {
+        display: grid;
+        grid-template: repeat(5, 1fr)/repeat( 4, 1fr);
+        height: 334px;
+        width: 354px;
+        border-radius: 5px;
+        border: 3px solid #00000000;
+    }
+
+    .key {
+        font-size: 1.2rem;
+        margin: 2px;
+    }
 }
