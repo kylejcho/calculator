@@ -8,12 +8,19 @@
     margin: 0;
 }
 
+html, body {
+    overflow-x: hidden;
+  }
+  body {
+    position: relative;
+  }
+
 .main {
     padding-top: 15vh;
     display: flex;
     justify-content: center;
     height: 85vh;
-    background-color: rgb(5, 5, 5);
+    background-color: #050505;
 }
 
 .calculator {
@@ -178,43 +185,24 @@
 
 @media all and (max-width: 800px) {
     .main {
-        padding-top: 15vh;
-        display: flex;
-        justify-content: center;
-        height: 85vh;
-        background-color: rgb(255, 255, 255);
+        padding-top: 5vh;
+        height: 95vh;
     }
 
     .calculator {
-        height: 500px;
-        width: 360px;
+        height: 550px;
+        width: 375px;
+        border: none;
+        background: rgb(0, 0, 0);
+        background: linear-gradient(31deg, rgba(31, 31, 31, 0) 0%, rgba(29, 28, 33, 0.075) 20%, rgba(255, 255, 255, 0) 100%);
     } 
     
     .header {
-        height: 50px;
-        width: 100%;
-
+        visibility: hidden;
     }
     
     .settingsButton {
-        width: 0;
-        margin: 0;
-        padding: 0;
         visibility: hidden;
-    }
-
-    
-    .title {
-        display: flex;
-        align-items: center;
-        font-size: 1.4rem;
-        font-weight: 600;
-        height: 30px;
-        width: 90px;
-    }
-    
-    .spacer {
-        width: 235px;
     }
     
     .display {
@@ -223,28 +211,29 @@
     
     .history {
         height: 20px;
-        width : 330px;
-        font-size: 1rem;
-        padding-top: 10px;
+        width : 335px;
+        font-size: 1.1rem;
     }
     
     .resultDisplay {
-        height: 60px;
-        width : 335px;
-        font-size: 3rem;
+        height: 90px;
+        width : 340px;
+        font-size: 4.5rem;
+        font-weight: 400;
     }
     
     .keypad {
+        margin-top: 30px;
         display: grid;
         grid-template: repeat(5, 1fr)/repeat( 4, 1fr);
-        height: 334px;
-        width: 354px;
+        height: 378px;
+        width: 365px;
         border-radius: 5px;
-        border: 3px solid #00000000;
+        border: 5px solid #00000000;
     }
 
     .key {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         margin: 2px;
     }
 }
