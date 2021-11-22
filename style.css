@@ -109,24 +109,41 @@
 }
 
 .key {
-    border: 1.5px solid #2f2f2f;
     margin: 0.8px;
-    background-color: rgb(58, 54, 57);
+    background-color: #3a3639;
+    border: none;
     border-radius: 5px;
-    
 }
 
 .key:hover {
-    background-color: #525252;
+    background-color: #464346;
 }
 
+.key:active {
+    background-color: #353134;
+}
 .num {
-    background-color: rgb(70, 67, 70);
-    border: 1.5px solid rgb(59, 57, 59);
+    background-color: #464346;
 } 
 
 .num:hover {
-    background-color: rgb(61, 57, 60);
+    background-color: #3d393c;
+}
+
+.num:active {
+    background-color: #353134;
+}
+
+#signButton {
+    background-color: #464346;
+}
+
+#signButton:hover {
+    background-color: #3d393c;
+}
+
+#signButton:active {
+    background-color: #353134;
 }
 
 .operator {
