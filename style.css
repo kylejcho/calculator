@@ -211,14 +211,14 @@ html, body {
     
     .history {
         height: 20px;
-        width : 335px;
+        width : 345px;
         font-size: 1.1rem;
     }
     
     .resultDisplay {
         height: 90px;
-        width : 340px;
-        font-size: 4.5rem;
+        width : 350px;
+        font-size: 4rem;
         font-weight: 400;
     }
     
